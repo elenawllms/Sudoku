@@ -20,54 +20,76 @@ h1 {
     font-weight: 900;
 }
 
-button {
+button, button:focus {
     margin: 0 10px;
     padding: 5px 15px;
-    font-size: 20px;
+    font-size: 16px;
     border: none;
     font-family: inherit;
-    background: lightgrey;
+    border: 2px solid #0382d1;
+    border-radius: 5px;
     border-radius: 5px;
     cursor: pointer;
+    background: #0382d1;
+    color: white;
+    transition: 0.5s background;
+
 }
+
+button:hover, button:active {
+    background: white;
+    color: #0382d1;
+}
+
+
 
 
 
 #difficulties {
-    
-    background: lightgray;
+    border: 2px solid black;
     border-radius: 5px;
     display: inline-block;
-    padding: 0px 5px;
-    font-size: 20px;
-    
-
 }
 
 
 
-#difficulties>button {
-    margin: 5px 2px;
-    padding: 3px 10px;
-    border-radius: 10px;
-    font-family: inherit;
+#difficulties button {
     background: white;
+    margin: 0;
+    font-size: 16px;
+    padding: 5px 15px;
+    font-family: inherit;
     color: black;
+    border-radius: 0;
     border: none;
     cursor: pointer;
     transition: 0.5s background, color;
 }
 
-#difficulties>.selectedDiff {
-    background: #0382d1;
+#difficulties .selectedDiff {
+    background: black;
     color: white;
+}
+
+#difficulties #easy {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+#difficulties #medium {
+    margin: 0px -3px;
+}
+
+#difficulties #hard {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 #sudoku-board {
     display: inline-grid;
     grid-template-columns: repeat(9, 40px);
     border: 4px solid black;
-    margin: 10px auto;
+    margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 .cell:nth-child(9n+3), .cell:nth-child(9n+6) {

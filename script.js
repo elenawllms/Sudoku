@@ -24,7 +24,7 @@ function getId(r, c) {
 }
 
 function setDifficulty(diff) {
-    $("#difficulties>button").removeClass("selectedDiff");
+    $("#difficulties button").removeClass("selectedDiff");
     $("#" + diff).addClass("selectedDiff");
     SELECTED_DIFFICULTY = diff;
 }
