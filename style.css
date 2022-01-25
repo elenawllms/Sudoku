@@ -59,7 +59,7 @@ button {
 }
 
 #difficulties>.selectedDiff {
-    background: teal;
+    background: #0382d1;
     color: white;
 }
 
@@ -120,4 +120,24 @@ button {
     color: black;
     cursor: default;
     /* background: lightpink; */
+}
+
+
+#number-buttons div {
+    display: inline-block;
+    /* border: 2px solid black; */
+    height: 30px;
+    width: 20px;
+    margin: 8px;
+    font-size: 25px;
+    color: #0382d1;
+    cursor: pointer;
+}
+
+#number-buttons div>img {
+    /* height: 20px; */
+    position: relative;
+    top: 3px;
+    width: 25px;
+
 }

@@ -146,19 +146,34 @@ function cell(r, c) {
         ")' id='" + id + "'></div>");
 }
 
+function numberSelected(num) {
+    if (SELECTED_CELL == null) {
+        return;
+    }
+    [r, c] = getPos(SELECTED_CELL);
+    BOARD_INFO[r][c].userNum = num;
+    displayBoard();
+}
+
+function deleteNum() {
+    if (SELECTED_CELL == null) {
+        return;
+    }
+    [r, c] = getPos(SELECTED_CELL);
+    BOARD_INFO[r][c].userNum = "";
+    displayBoard();
+}
+
 $(document).keydown(function(e) {
     if (SELECTED_CELL == null) {
         return;
     }
-    var pos = getPos(SELECTED_CELL);
-    var r = pos[0];
-    var c = pos[1];
+    [r, c] = getPos(SELECTED_CELL);
+
     if (e.which == 8) {
-        BOARD_INFO[r][c].userNum = "";
-        displayBoard();
+        deleteNum();
     } else if (e.which >= 49 && e.which <= 57) {
-        BOARD_INFO[r][c].userNum = e.which - 48;
-        displayBoard();
+        numberSelected(e.which - 48);
         
     } else if (e.which == 37 && c > 0) {
         // move selected cell left by one
@@ -190,14 +205,33 @@ function check() {
     M.toast({html: 'Congratulations, you did it!', classes: 'green'});
 }
 
+function numberButton(num) {
+    return ("<div class='num-button' onclick='numberSelected(" + 
+        num.toString() + ")'>" + num.toString() + "</div>");
+}
+
 
 $(document).ready(function() {
+
+    // Create the cells
     for (var r = 0; r < 9; r++) {
         for (var c = 0; c < 9; c++) {
             $("#sudoku-board").append(cell(r, c));
         }
         
     }
+
+    // Create the number buttons
+    for (var num = 1; num <= 9; num++) {
+        $("#number-buttons").append(numberButton(num));
+    }
+
+    $("#number-buttons").append(
+        `<div class='num-button' onclick='deleteNum()'>
+            <img src="images/backspace.svg"/>
+        </div>`)
+
+
     newGame();
     
     
